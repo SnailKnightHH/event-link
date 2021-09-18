@@ -19,14 +19,20 @@ export default function BasicCard() {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
-  const loginHandler = (event) => {
+  const loginHandler = async (event) => {
+    console.log(userName);
     event.preventDefault();
-    console.log("clicked");
     dispatch(authActions.login());
 
-    const userInfo = { userName, password };
-    const response = await fetch("http://localhost:8000/api/uers", {
+    //const userInfo = { userName, password };
+    const userInfo = { username: "joeh", password: "sdfhke" };
+    console.log(userInfo);
+    const response = await fetch("http://localhost:8000/api/users/", {
       method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify(userInfo),
     });
     const data = await response.json();
@@ -40,7 +46,7 @@ export default function BasicCard() {
     >
       <CardHeader title="Sign in" />
       <CardContent>
-        <form onSubmit="">
+        <form>
           <TextField
             fullWidth
             required
@@ -55,7 +61,7 @@ export default function BasicCard() {
             required
             label="Password"
             variant="outlined"
-            onchange={(e) => setPassword(e.target.event)}
+            onChange={(e) => setPassword(e.target.event)}
           />
         </form>
       </CardContent>
