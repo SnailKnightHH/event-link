@@ -9,29 +9,29 @@ import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import { Link } from "react-router-dom";
 import Grid from "@mui/material/Grid";
-
 import { useDispatch } from "react-redux";
 import { authActions } from "../Store/authSlice";
 
 const SignUpPage = () => {
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
   const [ifSignedUp, setIfSignedUp] = useState(false);
   const [error, setError] = useState("");
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
-  const signUpHandler = async () => {
-    setError(null);
-    try {
-      const response = await fetch();
-
-      if (!response.ok) {
-        throw new Error("User Not Found");
-      }
-      const data = await response.json();
-    } catch (error) {
-      setError(error.message);
-    }
-
+  const signUpHandler = async (event) => {
+    event.preventDefault();
+    const userInfo = { username: userName, password };
+    console.log(userInfo);
+    const response = await fetch("http://localhost:8000/api/users/", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userInfo),
+    });
     setIfSignedUp(true);
   };
   const updateUserName = (event) => {
@@ -80,7 +80,6 @@ const SignUpPage = () => {
       </Button>
 
       {ifSignedUp && <p>Sign Up Successful!</p>}
-      {error && <p>{error}</p>}
     </Card>
   );
 };
