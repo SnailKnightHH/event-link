@@ -7,6 +7,7 @@ import CardHeader from "@mui/material/CardHeader";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
+import { Link } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 
 import { useState } from "react";
@@ -75,13 +76,12 @@ export default function BasicCard() {
       </CardContent>
       <Grid container>
         <Grid item>
-          <Button variant="text" sx={{ m: 2 }} onClick={LoginHandler}>
+          <Button variant="text" sx={{ m: 2 }} onClick={loginHandler}>
             Login
           </Button>
-
-          <Link to="/Main">
+          <Link to="/main">
             <Button variant="contained" sx={{ m: 2 }}>
-              Sign Up
+              Sign in
             </Button>
           </Link>
         </Grid>
