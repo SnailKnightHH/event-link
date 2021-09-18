@@ -3,6 +3,7 @@ import Button from "@mui/material/Button";
 import Navbar from "./NavBar.js";
 import { display, flexbox, margin } from "@mui/system";
 import { Loader } from "@googlemaps/js-api-loader";
+import { Link } from "react-router-dom";
 
 const HostPage = () => {
   const loader = new Loader({
@@ -70,7 +71,12 @@ const HostPage = () => {
           label="category"
           style={{ margin: "0.5rem 0" }}
         />
-        <Button variant="contained" component="label" style={{ width: "50%" }}>
+        <Button
+          component={Link}
+          to={"/main"}
+          variant="contained"
+          style={{ width: "50%" }}
+        >
           host
         </Button>
       </section>

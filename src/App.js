@@ -2,11 +2,19 @@ import NavBar from "./Components/NavBar";
 import DropDownList from "./Components/DropDownList";
 import SignInPage from "./Components/SignInPage";
 import ParticipantPage from "./Components/ParticipantPage";
-import EventInfo from "./Components/EventInfo";
+import EventInfoPage from "./Components/EventInfoPage";
+import SignUpPage from "./Components/SignUpPage";
+import AccountMenu from "./Components/AccountMenu";
 import HostPage from "./Components/HostPage";
+import "./App.css";
 
 import { useSelector } from "react-redux";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
 import Profile from "./Components/Profile";
 import React from "react";
 
@@ -27,19 +35,33 @@ function App() {
     //     </Route>
     //   </Switch>
     // </BrowserRouter>
-    // <Router>
-    //   <React.Fragment>
-    //     <Switch>
-    //       <Route exact path="/">
-    //         <SignInPage />
-    //       </Route>
-    //       <Route exact path="/main">
-    //         <ParticipantPage />
-    //       </Route>
-    //     </Switch>
-    //   </React.Fragment>
-    // </Router>
-    <HostPage />
+    <Router>
+      <React.Fragment>
+        <Switch>
+          <Route exact path="/">
+            <Redirect to="/SignIn" />
+          </Route>
+          <Route exact path="/SignIn">
+            <SignInPage />
+          </Route>
+          <Route exact path="/SignUp">
+            <SignUpPage />
+          </Route>
+          <Route exact path="/main">
+            <ParticipantPage />
+          </Route>
+          <Route exact path="/Host">
+            <HostPage />
+          </Route>
+          <Route exact path="/info">
+            <EventInfoPage />
+          </Route>
+          <Route exact path="/Profile">
+            <Profile />
+          </Route>
+        </Switch>
+      </React.Fragment>
+    </Router>
   );
 }
 /* {!isAuth && <SignInPage />}

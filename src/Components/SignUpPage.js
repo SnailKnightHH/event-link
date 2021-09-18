@@ -1,18 +1,22 @@
 import React, { useState } from "react";
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import CardHeader from "@mui/material/CardHeader";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import TextField from "@mui/material/TextField";
 import { Link } from "react-router-dom";
+import Grid from "@mui/material/Grid";
+import { useDispatch } from "react-redux";
+import { authActions } from "../Store/authSlice";
 
 const SignUpPage = () => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [ifSignedUp, setIfSignedUp] = useState(false);
-
-  const updateUserName = (event) => {
-    setUserName(event.target.value);
-  };
-
-  const updateUserPW = (event) => {
-    setPassword(event.target.value);
-  };
+  const [error, setError] = useState("");
 
   const signUpHandler = async (event) => {
     event.preventDefault();
@@ -27,6 +31,13 @@ const SignUpPage = () => {
       body: JSON.stringify(userInfo),
     });
     setIfSignedUp(true);
+  };
+  const updateUserName = (event) => {
+    setUserName(event.target.value);
+  };
+
+  const updateUserPW = (event) => {
+    setPassword(event.target.value);
   };
 
   return (
@@ -55,9 +66,17 @@ const SignUpPage = () => {
           />
         </form>
       </CardContent>
-      <Button variant="contained" sx={{ m: 2 }} onClick={signUpHandler}>
+
+      <Button
+        component={Link}
+        to={"/main"}
+        variant="contained"
+        sx={{ m: 2 }}
+        onClick={signUpHandler}
+      >
         Sign Up
       </Button>
+
       {ifSignedUp && <p>Sign Up Successful!</p>}
     </Card>
   );

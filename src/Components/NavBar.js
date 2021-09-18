@@ -9,6 +9,7 @@ import { deepOrange } from "@mui/material/colors";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Logo from "../Images/Eventlink-logo.png";
 import AccountMenu from "./AccountMenu";
+import { Link } from "react-router-dom";
 
 const customTheme = createTheme({
   palette: {
@@ -53,7 +54,10 @@ export default function ButtonAppBar() {
               >
                 Event Link
               </Typography>
+
               <IconButton
+                component={Link}
+                to={"/Host"}
                 size="medium"
                 edge="start"
                 color="inherit"

@@ -1,7 +1,9 @@
 import React from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
+import Navbar from "./NavBar.js";
 import { deepOrange } from "@mui/material/colors";
+import { Link } from "react-router-dom";
 
 export default class EventInfo extends React.Component {
   state = {};
@@ -9,6 +11,7 @@ export default class EventInfo extends React.Component {
   render() {
     return (
       <div style={{ padding: "1rem" }}>
+        <Navbar />
         <h1>Event Name: </h1>
         <p>Looking for minecraft gamers!</p>
         <h1>Description: </h1>
@@ -20,7 +23,11 @@ export default class EventInfo extends React.Component {
         <p>Looking for minecraft gamers!</p>
         <h1>Category: </h1>
         <p>Gaming</p>
-        <Button variant="contained">Attend</Button>
+
+        <Button component={Link} to={"/main"} variant="contained">
+          Attend
+        </Button>
+
         <h1>Attenders:</h1>
         <ul>
           <li style={{ listStyleType: "none" }}>

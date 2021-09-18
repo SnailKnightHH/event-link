@@ -75,14 +75,17 @@ export default function BasicCard() {
       </CardContent>
       <Grid container>
         <Grid item>
-          <Button variant="text" sx={{ m: 2 }} onClick={LoginHandler}>
+          <Button component={Link} to={"/SignUp"} variant="text" sx={{ m: 2 }}>
             Login
           </Button>
-          <Link to="/main">
-            <Button variant="contained" sx={{ m: 2 }}>
-              Sign in
-            </Button>
-          </Link>
+          <Button
+            component={Link}
+            to={"/main"}
+            variant="contained"
+            sx={{ m: 2 }}
+          >
+            Sign in
+          </Button>
         </Grid>
       </Grid>
       {error && <p>{error}</p>}

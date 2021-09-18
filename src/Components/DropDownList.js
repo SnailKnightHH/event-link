@@ -13,7 +13,7 @@ export default function BasicSelect() {
   };
 
   return (
-    <Box sx={{ width: 240}}>
+    <Box sx={{ width: 240 }}>
       <FormControl fullWidth>
         <InputLabel id="demo-simple-select-label">Age</InputLabel>
         <Select
