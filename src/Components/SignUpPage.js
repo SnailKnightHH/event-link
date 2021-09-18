@@ -41,38 +41,49 @@ const SignUpPage = () => {
   };
 
   return (
-    <Card
-      sx={{ minWidth: 275, display: "flex", flexDirection: "column" }}
-      style={{ position: "fixed" }}
+    <div
+      className="test"
+      style={{
+        height: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
     >
-      <CardHeader title="Sign Up" />
-      <CardContent>
-        <form onSubmit="">
-          <TextField
-            fullWidth
-            required
-            label="User name"
-            variant="outlined"
-            onChange={updateUserName}
-            sx={{ mb: 3 }}
-          />
+      <Card
+        sx={{ minWidth: 275, display: "flex", flexDirection: "column" }}
+        style={{ position: "fixed" }}
+      >
+        <CardHeader title="Sign Up" />
+        <CardContent>
+          <form onSubmit="">
+            <TextField
+              fullWidth
+              required
+              label="User name"
+              variant="outlined"
+              onChange={updateUserName}
+              sx={{ mb: 3 }}
+            />
 
-          <TextField
-            fullWidth
-            required
-            label="Password"
-            variant="outlined"
-            onChange={updateUserPW}
-          />
-        </form>
-      </CardContent>
+            <TextField
+              fullWidth
+              required
+              label="Password"
+              variant="outlined"
+              onChange={updateUserPW}
+            />
+          </form>
+        </CardContent>
 
-      <Button component={Link} to={"/main"} variant="contained" sx={{ m: 2 }}>
-        Sign Up
-      </Button>
+        <Button component={Link} to={"/main"} variant="contained" sx={{ m: 2 }}>
+          Sign Up
+        </Button>
 
-      {ifSignedUp && <p>Sign Up Successful!</p>}
-    </Card>
+        {ifSignedUp && <p>Sign Up Successful!</p>}
+      </Card>
+    </div>
   );
 };
 

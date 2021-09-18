@@ -6,25 +6,25 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
 export default function BasicSelect() {
-  const [age, setAge] = useState("");
+  const [Category, setCategory] = useState("");
 
   const handleChange = (event) => {
-    setAge(event.target.value);
+    setCategory(event.target.value);
   };
 
   return (
     <Box sx={{ width: 240 }}>
       <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Age</InputLabel>
+        <InputLabel id="demo-simple-select-label">Category</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={age}
-          label="Age"
+          value={Category}
+          label="Category"
           onChange={handleChange}
         >
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
+          <MenuItem value={10}>Gaming</MenuItem>
+          <MenuItem value={20}>Movie</MenuItem>
           <MenuItem value={30}>Thirty</MenuItem>
         </Select>
       </FormControl>

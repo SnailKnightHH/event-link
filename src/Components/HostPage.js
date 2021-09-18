@@ -18,6 +18,32 @@ const HostPage = () => {
     });
   });
 
+  const HostHandler = async (event) => {
+    // event.preventDefault();
+    // const userInfo = { username: userName, password };
+    // console.log(userInfo);
+    // setError(null);
+    // try {
+    //   const response = await fetch("http://127.0.0.1:8000/login/", {
+    //     method: "POST",
+    //     headers: {
+    //       Accept: "application/json",
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(userInfo),
+    //   });
+    //   console.log(response.ok);
+    //   if (!response.ok) {
+    //     throw new Error("User Not Found");
+    //   }
+    //   const data = await response.json();
+    //   dispatch(authActions.login());
+    //   history.push("/main");
+    // } catch (error) {
+    //   setError(error.message);
+    // }
+  };
+
   return (
     <div>
       <script
@@ -34,7 +60,6 @@ const HostPage = () => {
           width: "50vw",
         }}
       >
-        {" "}
         <h1>Host an event</h1>
         <TextField
           required
@@ -76,6 +101,7 @@ const HostPage = () => {
           to={"/main"}
           variant="contained"
           style={{ width: "50%" }}
+          onClick={HostHandler}
         >
           host
         </Button>

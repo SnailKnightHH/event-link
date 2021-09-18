@@ -12,6 +12,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import { Link } from "react-router-dom";
 import Select from "@mui/material/Select";
+import DropDownList from "./DropDownList";
 
 export default class EventCards extends React.Component {
   state = {
@@ -41,8 +42,8 @@ export default class EventCards extends React.Component {
       return <div>didn't get an event</div>;
     }
     return (
-      <div>
-        <Box sx={{ maxWidth: 120 }} style={{ padding: "1rem" }}>
+      <div style={{ padding: "1rem" }}>
+        {/* <Box sx={{ maxWidth: 120 }} style={{ padding: "1rem" }}>
           <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label">category</InputLabel>
             <Select
@@ -57,7 +58,8 @@ export default class EventCards extends React.Component {
               <MenuItem value={"Thirty"}>Thirty</MenuItem>
             </Select>
           </FormControl>
-        </Box>
+        </Box> */}
+        <DropDownList />
         <Grid container spacing={2}>
           {this.state.events.map((p) => (
             <Grid key={p.title} item xs={12} sm={6} md={4}>

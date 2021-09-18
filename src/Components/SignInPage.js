@@ -9,7 +9,7 @@ import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import { Link } from "react-router-dom";
 import Grid from "@mui/material/Grid";
-
+import Container from "@mui/material/Container";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { authActions } from "../Store/authSlice";
@@ -58,48 +58,60 @@ export default function BasicCard() {
   };
 
   return (
-    <Card
-      sx={{ minWidth: 275, display: "flex", flexDirection: "column" }}
-      style={{ position: "fixed" }}
+    <div
+      className="test"
+      style={{
+        height: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
     >
-      <CardHeader title="Log in" />
-      <CardContent>
-        <form>
-          <TextField
-            fullWidth
-            required
-            label="User name"
-            variant="outlined"
-            onChange={updateUserName}
-            sx={{ mb: 3 }}
-          />
+      <Card>
+        <CardHeader title="Log in" />
+        <CardContent>
+          <form>
+            <TextField
+              fullWidth
+              required
+              label="User name"
+              variant="outlined"
+              onChange={updateUserName}
+              sx={{ mb: 3 }}
+            />
 
-          <TextField
-            fullWidth
-            required
-            label="Password"
-            variant="outlined"
-            onChange={updateUserPW}
-          />
-        </form>
-      </CardContent>
-      <Grid container>
-        <Grid item>
-          <Button component={Link} to={"/SignUp"} variant="text" sx={{ m: 2 }}>
-            Login
-          </Button>
-          <Button
-            component={Link}
-            to={"/main"}
-            variant="contained"
-            sx={{ m: 2 }}
-            onClick={LoginHandler}
-          >
-            Sign in
-          </Button>
+            <TextField
+              fullWidth
+              required
+              label="Password"
+              variant="outlined"
+              onChange={updateUserPW}
+            />
+          </form>
+        </CardContent>
+        <Grid container>
+          <Grid item>
+            <Button
+              component={Link}
+              to={"/SignUp"}
+              variant="contained"
+              sx={{ m: 2 }}
+            >
+              Sign up
+            </Button>
+            <Button
+              component={Link}
+              to={"/main"}
+              sx={{ m: 2 }}
+              onClick={LoginHandler}
+            >
+              Sign in
+            </Button>
+          </Grid>
         </Grid>
-      </Grid>
-      {error && <p>{error}</p>}
-    </Card>
+        {error && <p>{error}</p>}
+      </Card>
+    </div>
   );
 }
