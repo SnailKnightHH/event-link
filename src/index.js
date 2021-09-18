@@ -3,13 +3,15 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import NavBar from "./Components/NavBar";
-import DropDownList from "./Components/DropDownList";
-import SignInPage from "./Components/SignInPage";
+
+import { Provider } from "react-redux";
+import store from "./Store/index";
 
 ReactDOM.render(
   <React.StrictMode>
-    <SignInPage />
+    <Provider store={store}>
+        <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );
