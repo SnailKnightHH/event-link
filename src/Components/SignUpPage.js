@@ -17,8 +17,6 @@ const SignUpPage = () => {
   const [password, setPassword] = useState("");
   const [ifSignedUp, setIfSignedUp] = useState(false);
   const [error, setError] = useState("");
-  const [userName, setUserName] = useState("");
-  const [password, setPassword] = useState("");
 
   const signUpHandler = async (event) => {
     event.preventDefault();
