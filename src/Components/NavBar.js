@@ -8,6 +8,7 @@ import IconButton from "@mui/material/IconButton";
 import { deepOrange } from "@mui/material/colors";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Logo from "../Images/Eventlink-logo.png";
+import Paper from "@mui/material/Paper";
 
 const customTheme = createTheme({
   palette: {
@@ -38,14 +39,12 @@ export default function ButtonAppBar() {
       <ThemeProvider theme={customTheme}>
         <AppBar position="static" color="primary">
           <ThemeProvider theme={toolBarItemTheme}>
-            <Toolbar>
-              {
-                <img
-                  src={Logo}
-                  style={{ maxWidth: "2rem", margin: "0.5rem 0.2rem" }}
-                  alt="EventLink Logo"
-                />
-              }
+            <Toolbar sx={{ height: 1 / 4 }}>
+              <img
+                src={Logo}
+                alt="EventLink Logo"
+                style={{ maxWidth: "2rem", margin: "0.5rem 0.2rem" }}
+              />
               <Typography
                 variant="h6"
                 component="div"
@@ -54,17 +53,17 @@ export default function ButtonAppBar() {
               >
                 Event Link
               </Typography>
-              {/* <IconButton
-                size="large"
+              <IconButton
+                size="medium"
                 edge="start"
                 color="inherit"
                 aria-label="menu"
                 sx={{ mr: 2 }}
-              > */}
-              <Button variant="text" color="primary">
+              >
+                {/* <Button variant="text" color="primary"> */}
                 Host
-              </Button>
-              {/* </IconButton> */}
+                {/* </Button> */}
+              </IconButton>
               <Button color="inherit">
                 <Avatar sx={{ bgcolor: deepOrange[500] }}>NL</Avatar>
               </Button>

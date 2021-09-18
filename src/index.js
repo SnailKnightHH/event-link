@@ -5,11 +5,14 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import EventCards from "./Components/EventCards";
 import NavBar from "./Components/NavBar";
+import DropDownList from "./Components/DropDownList";
+import SignInPage from "./Components/SignInPage";
 
 ReactDOM.render(
   <React.StrictMode>
     <NavBar />
     <EventCards />
+    <SignInPage />
   </React.StrictMode>,
   document.getElementById("root")
 );
