@@ -19,12 +19,21 @@ export default function BasicCard() {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
+  const updateUserName = (event) => {
+    setUserName(event.target.value);
+  };
+
+  const updateUserPW = (event) => {
+    setPassword(event.target.value);
+  };
+
   const loginHandler = async (event) => {
-    console.log(userName);
     event.preventDefault();
+    console.log("clicked");
+    console.log(userName);
+    console.log(password);
     dispatch(authActions.login());
 
-    //const userInfo = { userName, password };
     const userInfo = { username: "joeh", password: "sdfhke" };
     console.log(userInfo);
     const response = await fetch("http://localhost:8000/api/users/", {
@@ -52,7 +61,7 @@ export default function BasicCard() {
             required
             label="User name"
             variant="outlined"
-            onChange={(e) => setUserName(e.target.event)}
+            onChange={updateUserName}
             sx={{ mb: 3 }}
           />
 
@@ -61,7 +70,7 @@ export default function BasicCard() {
             required
             label="Password"
             variant="outlined"
-            onChange={(e) => setPassword(e.target.event)}
+            onChange={updateUserPW}
           />
         </form>
       </CardContent>
