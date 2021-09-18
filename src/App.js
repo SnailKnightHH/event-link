@@ -27,18 +27,19 @@ function App() {
     //     </Route>
     //   </Switch>
     // </BrowserRouter>
-    <Router>
-      <React.Fragment>
-        <Switch>
-          <Route exact path="/">
-            <SignInPage />
-          </Route>
-          <Route exact path="/main">
-            <ParticipantPage />
-          </Route>
-        </Switch>
-      </React.Fragment>
-    </Router>
+    // <Router>
+    //   <React.Fragment>
+    //     <Switch>
+    //       <Route exact path="/">
+    //         <SignInPage />
+    //       </Route>
+    //       <Route exact path="/main">
+    //         <ParticipantPage />
+    //       </Route>
+    //     </Switch>
+    //   </React.Fragment>
+    // </Router>
+    <HostPage />
   );
 }
 /* {!isAuth && <SignInPage />}

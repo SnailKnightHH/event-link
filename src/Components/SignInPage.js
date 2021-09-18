@@ -13,7 +13,6 @@ import Grid from "@mui/material/Grid";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { authActions } from "../Store/authSlice";
-import { Link } from "react-router-dom";
 
 export default function BasicCard() {
   const dispatch = useDispatch();
@@ -76,7 +75,7 @@ export default function BasicCard() {
       </CardContent>
       <Grid container>
         <Grid item>
-          <Button variant="text" sx={{ m: 2 }} onClick={loginHandler}>
+          <Button variant="text" sx={{ m: 2 }} onClick={LoginHandler}>
             Login
           </Button>
           <Link to="/main">
