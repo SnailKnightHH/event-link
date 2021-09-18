@@ -5,11 +5,12 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
-export default function BasicSelect() {
+export default function BasicSelect(props) {
   const [Category, setCategory] = useState("");
 
   const handleChange = (event) => {
     setCategory(event.target.value);
+    props.updateCurCategory(Category);
   };
 
   return (
@@ -23,9 +24,9 @@ export default function BasicSelect() {
           label="Category"
           onChange={handleChange}
         >
-          <MenuItem value={10}>Gaming</MenuItem>
-          <MenuItem value={20}>Movie</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+          <MenuItem value={1}>Gaming</MenuItem>
+          <MenuItem value={2}>Movie</MenuItem>
+          <MenuItem value={3}>Thirty</MenuItem>
         </Select>
       </FormControl>
     </Box>

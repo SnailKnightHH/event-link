@@ -62,7 +62,7 @@ export default class EventCards extends React.Component {
         <DropDownList />
         <Grid container spacing={2}>
           {this.state.events.map((p) => (
-            <Grid key={p.title} item xs={12} sm={6} md={4}>
+            <Grid key={p.id} item xs={12} sm={6} md={4}>
               <Card sx={{ width: 300, margin: "2rem" }}>
                 <CardActionArea component={Link} to={"/info"}>
                   <CardMedia
