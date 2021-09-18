@@ -1,11 +1,14 @@
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Navbar from "./NavBar.js";
-import { display, flexbox, margin } from "@mui/system";
 import { Loader } from "@googlemaps/js-api-loader";
 import { Link } from "react-router-dom";
-
+import DropDownList from "./DropDownList";
+import { useState } from "react";
+import { authActions } from "../Store/authSlice";
+import { useDispatch } from "react-redux";
 const HostPage = () => {
+  const dispatch = useDispatch();
   const loader = new Loader({
     apiKey: "AIzaSyDmRk7NO6m6Q002fnOnz3vrJOjzbg61qPw",
     version: "weekly",
@@ -18,30 +21,46 @@ const HostPage = () => {
     });
   });
 
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [cartegory, setCartegory] = useState("");
+  const [location, setLocation] = useState("");
+  const [error, setError] = useState("");
+  const updateTitle = (event) => {
+    setTitle(event.target.value);
+  };
+  const updateDescription = (event) => {
+    setDescription(event.target.value);
+  };
+  const updateCartegory = (currentCategory) => {
+    setCartegory(currentCategory);
+    console.log("host" + cartegory);
+  };
+  const updateLocation = (event) => {
+    setLocation(event.target.value);
+  };
+
   const HostHandler = async (event) => {
-    // event.preventDefault();
-    // const userInfo = { username: userName, password };
-    // console.log(userInfo);
-    // setError(null);
-    // try {
-    //   const response = await fetch("http://127.0.0.1:8000/login/", {
-    //     method: "POST",
-    //     headers: {
-    //       Accept: "application/json",
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(userInfo),
-    //   });
-    //   console.log(response.ok);
-    //   if (!response.ok) {
-    //     throw new Error("User Not Found");
-    //   }
-    //   const data = await response.json();
-    //   dispatch(authActions.login());
-    //   history.push("/main");
-    // } catch (error) {
-    //   setError(error.message);
-    // }
+    const eventInfo = { title, description, cartegory, location };
+    console.log(eventInfo);
+    setError(null);
+    try {
+      const response = await fetch("http://localhost:8000/api/events/", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(eventInfo),
+      });
+      console.log(response.ok);
+      if (!response.ok) {
+        throw new Error("User Not Found");
+      }
+      const data = await response.json();
+    } catch (error) {
+      setError(error.message);
+    }
   };
 
   return (
@@ -73,11 +92,13 @@ const HostPage = () => {
           required
           defaultValue=""
           label="Event Name"
+          onChange={updateTitle}
           style={{ margin: "0.5rem 0" }}
         />
         <TextField
           defaultValue=""
           label="Description"
+          onChange={updateDescription}
           style={{ margin: "0.5rem 0" }}
         />
         <TextField
@@ -93,15 +114,11 @@ const HostPage = () => {
           required
           defaultValue=""
           label="location"
+          onChange={updateLocation}
           style={{ margin: "0.5rem 0" }}
         />
         <div id="map" style={{ height: "30rem" }}></div>
-        <TextField
-          required
-          defaultValue=""
-          label="category"
-          style={{ margin: "0.5rem 0" }}
-        />
+        <DropDownList updateCurCategory={updateCartegory} />
         <Button
           component={Link}
           to={"/main"}
