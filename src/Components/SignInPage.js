@@ -27,20 +27,25 @@ export default function BasicCard() {
     setPassword(event.target.value);
   };
 
-  const loginHandler = (event) => {
+  const loginHandler = async (event) => {
     event.preventDefault();
     console.log("clicked");
     console.log(userName);
     console.log(password);
     dispatch(authActions.login());
 
-    // const userInfo = { userName, password };
-    // const response = await fetch("http://localhost:8000/api/uers", {
-    //   method: "POST",
-    //   body: JSON.stringify(userInfo),
-    // });
-    // const data = await response.json();
-    // console.log(data);
+    const userInfo = { username: "joeh", password: "sdfhke" };
+    console.log(userInfo);
+    const response = await fetch("http://localhost:8000/api/users/", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userInfo),
+    });
+    const data = await response.json();
+    console.log(data);
   };
 
   return (
@@ -50,7 +55,7 @@ export default function BasicCard() {
     >
       <CardHeader title="Sign in" />
       <CardContent>
-        <form onSubmit="">
+        <form>
           <TextField
             fullWidth
             required
