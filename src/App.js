@@ -27,9 +27,10 @@ function App() {
     //   </Switch>
     // </BrowserRouter>
     <React.Fragment>
-      {!isAuth && <SignInPage />}
+      {/* {!isAuth && <SignInPage />}
       {isAuth && <ParticipantPage />}
-      {isAuth && <EventInfo />}
+      {isAuth && <EventInfo />} */}
+      <ParticipantPage />
     </React.Fragment>
   );
 }

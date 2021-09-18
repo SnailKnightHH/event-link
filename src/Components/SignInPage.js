@@ -34,7 +34,7 @@ export default function BasicCard() {
     console.log(password);
     dispatch(authActions.login());
 
-    const userInfo = { username: "joeh", password: "sdfhke" };
+    const userInfo = { username: userName, password };
     console.log(userInfo);
     const response = await fetch("http://localhost:8000/api/users/", {
       method: "POST",
