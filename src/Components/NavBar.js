@@ -8,7 +8,7 @@ import IconButton from "@mui/material/IconButton";
 import { deepOrange } from "@mui/material/colors";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Logo from "../Images/Eventlink-logo.png";
-import Paper from "@mui/material/Paper";
+import AccountMenu from "./AccountMenu";
 
 const customTheme = createTheme({
   palette: {
@@ -64,9 +64,10 @@ export default function ButtonAppBar() {
                 Host
                 {/* </Button> */}
               </IconButton>
-              <Button color="inherit">
+              {/* <Button color="inherit">
                 <Avatar sx={{ bgcolor: deepOrange[500] }}>NL</Avatar>
-              </Button>
+              </Button> */}
+              <AccountMenu />
             </Toolbar>
           </ThemeProvider>
         </AppBar>
