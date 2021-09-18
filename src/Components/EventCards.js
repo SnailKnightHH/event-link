@@ -10,6 +10,7 @@ import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
+import { Link } from "react-router-dom";
 import Select from "@mui/material/Select";
 
 export default class EventCards extends React.Component {
@@ -61,7 +62,7 @@ export default class EventCards extends React.Component {
           {this.state.events.map((p) => (
             <Grid key={p.title} item xs={12} sm={6} md={4}>
               <Card sx={{ width: 300, margin: "2rem" }}>
-                <CardActionArea>
+                <CardActionArea component={Link} to={"/info"}>
                   <CardMedia
                     component="img"
                     height="140"
