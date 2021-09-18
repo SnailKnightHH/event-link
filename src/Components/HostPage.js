@@ -45,7 +45,15 @@ const HostPage = () => {
   };
 
   return (
-    <div>
+    <div
+      style={{
+        height: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
       <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmRk7NO6m6Q002fnOnz3vrJOjzbg61qPw&callback=initMap&v=weekly"
         async
@@ -68,13 +76,11 @@ const HostPage = () => {
           style={{ margin: "0.5rem 0" }}
         />
         <TextField
-          required
           defaultValue=""
           label="Description"
           style={{ margin: "0.5rem 0" }}
         />
         <TextField
-          required
           defaultValue=""
           label="cover image"
           style={{ margin: "0.5rem 0" }}

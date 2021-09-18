@@ -14,6 +14,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { authActions } from "../Store/authSlice";
 import { useHistory } from "react-router-dom";
+import Logo from "../Images/Eventlink-logo.png";
 
 export default function BasicCard() {
   const dispatch = useDispatch();
@@ -69,8 +70,19 @@ export default function BasicCard() {
       }}
     >
       <Card>
-        <CardHeader title="Log in" />
+        <CardHeader
+          style={{ paddingBottom: 0 }}
+          avatar={
+            <img
+              src={Logo}
+              alt="EventLink Logo"
+              style={{ maxWidth: "4rem", margin: "1rem 0" }}
+            />
+          }
+          title={<Typography variant="h5">Event-Link</Typography>}
+        />
         <CardContent>
+          <h1>login</h1>
           <form>
             <TextField
               fullWidth
