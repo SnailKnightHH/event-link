@@ -13,10 +13,11 @@ import Grid from "@mui/material/Grid";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { authActions } from "../Store/authSlice";
+import { useHistory } from "react-router-dom";
 
 export default function BasicCard() {
   const dispatch = useDispatch();
-
+  const history = useHistory();
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
@@ -32,16 +33,25 @@ export default function BasicCard() {
 
   const LoginHandler = async (event) => {
     event.preventDefault();
+    const userInfo = { username: userName, password };
+    console.log(userInfo);
     setError(null);
     try {
-      const response = await fetch("");
-
+      const response = await fetch("http://127.0.0.1:8000/login/", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userInfo),
+      });
+      console.log(response.ok);
       if (!response.ok) {
         throw new Error("User Not Found");
       }
       const data = await response.json();
-
       dispatch(authActions.login());
+      history.push("/main");
     } catch (error) {
       setError(error.message);
     }
@@ -83,6 +93,7 @@ export default function BasicCard() {
             to={"/main"}
             variant="contained"
             sx={{ m: 2 }}
+            onClick={LoginHandler}
           >
             Sign in
           </Button>

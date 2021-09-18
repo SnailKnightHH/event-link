@@ -67,13 +67,7 @@ const SignUpPage = () => {
         </form>
       </CardContent>
 
-      <Button
-        component={Link}
-        to={"/main"}
-        variant="contained"
-        sx={{ m: 2 }}
-        onClick={signUpHandler}
-      >
+      <Button component={Link} to={"/main"} variant="contained" sx={{ m: 2 }}>
         Sign Up
       </Button>
 
