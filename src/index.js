@@ -3,11 +3,13 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import EventCards from "./Components/EventCards";
 import NavBar from "./Components/NavBar";
 
 ReactDOM.render(
   <React.StrictMode>
     <NavBar />
+    <EventCards />
   </React.StrictMode>,
   document.getElementById("root")
 );

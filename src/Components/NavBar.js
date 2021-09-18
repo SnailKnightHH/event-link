@@ -39,7 +39,13 @@ export default function ButtonAppBar() {
         <AppBar position="static" color="primary">
           <ThemeProvider theme={toolBarItemTheme}>
             <Toolbar>
-              {/* <img src={Logo} alt="EventLink Logo" /> */}
+              {
+                <img
+                  src={Logo}
+                  style={{ maxWidth: "2rem", margin: "0.5rem 0.2rem" }}
+                  alt="EventLink Logo"
+                />
+              }
               <Typography
                 variant="h6"
                 component="div"
