@@ -4,10 +4,12 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import NavBar from "./Components/NavBar";
+import DropDownList from "./Components/DropDownList";
+import SignInPage from "./Components/SignInPage";
 
 ReactDOM.render(
   <React.StrictMode>
-    <NavBar />
+    <SignInPage />
   </React.StrictMode>,
   document.getElementById("root")
 );
