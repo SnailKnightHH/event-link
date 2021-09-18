@@ -9,16 +9,30 @@ import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
 
-const bull = (
-  <Box
-    component="span"
-    sx={{ display: "inline-block", mx: "2px", transform: "scale(0.8)" }}
-  >
-    •
-  </Box>
-);
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { authActions } from "../Store/authSlice";
 
 export default function BasicCard() {
+  const dispatch = useDispatch();
+
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+
+  const loginHandler = (event) => {
+    event.preventDefault();
+    console.log("clicked");
+    dispatch(authActions.login());
+
+    // const userInfo = { userName, password };
+    // const response = await fetch("http://localhost:8000/api/events", {
+    //   method: "POST",
+    //   body: JSON.stringify(userInfo),
+    // });
+    // const data = await response.json();
+    // console.log(data);
+  };
+
   return (
     <Card
       sx={{ minWidth: 275, display: "flex", flexDirection: "column" }}
@@ -31,19 +45,26 @@ export default function BasicCard() {
             fullWidth
             required
             label="User name"
-            value="email"
+            variant="outlined"
+            onChange={(e) => setUserName(e.target.event)}
             sx={{ mb: 3 }}
           />
-        </form>
-        <form onSubmit="">
-          <TextField fullWidth required label="Password" value="email" />
+
+          <TextField
+            fullWidth
+            required
+            label="Password"
+            variant="outlined"
+            onchange={(e) => setPassword(e.target.event)}
+          />
         </form>
       </CardContent>
       <Grid container>
         <Grid item>
-          <Button variant="text" sx={{ m: 2 }}>
-            Login
+          <Button variant="text" sx={{ m: 2 }} onClick={loginHandler}>
+            Login{" "}
           </Button>
+
           <Button variant="contained" sx={{ m: 2 }}>
             Sign Up
           </Button>
