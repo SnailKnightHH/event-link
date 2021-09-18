@@ -15,25 +15,24 @@ function App() {
   const isAuth = useSelector((state) => state.auth.isAuthenticated);
 
   return (
-    // <BrowserRouter>
-    //   <Switch>
-    //     <Route exact path="/">
-    //       <Redirect to="/Sign-in" />
-    //     </Route>
-    //     <Route exact to="/Sign-in">
-    //       {!isAuth && <SignInPage />}
-    //     </Route>
-    //     <Route exact to="/Main">
-    //       {isAuth && <NavBar />}
-    //     </Route>
-    //   </Switch>
-    // </BrowserRouter>
-    <React.Fragment>
-      {/* {!isAuth && <SignInPage />}
-      {isAuth && <ParticipantPage />}
-      {isAuth && <EventInfo />} */}
-      <HostPage />
-    </React.Fragment>
+    <BrowserRouter>
+      <Switch>
+        {/* <Route exact path="/">
+          <Redirect to="/Sign-in" />
+        </Route> */}
+        <Route exact to="/Sign-in">
+          {!isAuth && <SignInPage />}
+        </Route>
+        <Route exact to="/Main">
+          <ParticipantPage />
+        </Route>
+      </Switch>
+    </BrowserRouter>
+    // <React.Fragment>
+    //   {!isAuth && <SignInPage />}
+    //   {isAuth && <ParticipantPage />}
+    //   <SignInPage />
+    // </React.Fragment>
   );
 }
 

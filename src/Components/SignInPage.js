@@ -12,6 +12,7 @@ import Grid from "@mui/material/Grid";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { authActions } from "../Store/authSlice";
+import { Link } from "react-router-dom";
 
 export default function BasicCard() {
   const dispatch = useDispatch();
@@ -27,25 +28,23 @@ export default function BasicCard() {
     setPassword(event.target.value);
   };
 
-  const loginHandler = async (event) => {
-    event.preventDefault();
-    console.log("clicked");
-    console.log(userName);
-    console.log(password);
-    dispatch(authActions.login());
+  const [error, setError] = useState("");
 
-    const userInfo = { username: userName, password };
-    console.log(userInfo);
-    const response = await fetch("http://localhost:8000/api/users/", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(userInfo),
-    });
-    const data = await response.json();
-    console.log(data);
+  const LoginHandler = async (event) => {
+    event.preventDefault();
+    setError(null);
+    try {
+      const response = await fetch("");
+
+      if (!response.ok) {
+        throw new Error("User Not Found");
+      }
+      const data = await response.json();
+
+      dispatch(authActions.login());
+    } catch (error) {
+      setError(error.message);
+    }
   };
 
   return (
@@ -53,7 +52,7 @@ export default function BasicCard() {
       sx={{ minWidth: 275, display: "flex", flexDirection: "column" }}
       style={{ position: "fixed" }}
     >
-      <CardHeader title="Sign in" />
+      <CardHeader title="Log in" />
       <CardContent>
         <form>
           <TextField
@@ -76,15 +75,18 @@ export default function BasicCard() {
       </CardContent>
       <Grid container>
         <Grid item>
-          <Button variant="text" sx={{ m: 2 }} onClick={loginHandler}>
-            Login{" "}
+          <Button variant="text" sx={{ m: 2 }} onClick={LoginHandler}>
+            Login
           </Button>
 
-          <Button variant="contained" sx={{ m: 2 }}>
-            Sign Up
-          </Button>
+          <Link to="/Main">
+            <Button variant="contained" sx={{ m: 2 }}>
+              Sign Up
+            </Button>
+          </Link>
         </Grid>
       </Grid>
+      {error && <p>{error}</p>}
     </Card>
   );
 }

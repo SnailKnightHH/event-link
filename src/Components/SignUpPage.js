@@ -1,22 +1,31 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const SignUpPage = () => {
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
   const [ifSignedUp, setIfSignedUp] = useState(false);
-  const [error, seError] = useState("");
 
-  const signUpHandler = () => {
-    setError(null);
-    try {
-      const response = await fetch();
+  const updateUserName = (event) => {
+    setUserName(event.target.value);
+  };
 
-      if (!response.ok) {
-        throw new Error("User Not Found");
-      }
-      const data = await response.json();
-    } catch (error) {
-      setError(error.message);
-    }
+  const updateUserPW = (event) => {
+    setPassword(event.target.value);
+  };
 
+  const signUpHandler = async (event) => {
+    event.preventDefault();
+    const userInfo = { username: userName, password };
+    console.log(userInfo);
+    const response = await fetch("http://localhost:8000/api/users/", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userInfo),
+    });
     setIfSignedUp(true);
   };
 
@@ -50,7 +59,6 @@ const SignUpPage = () => {
         Sign Up
       </Button>
       {ifSignedUp && <p>Sign Up Successful!</p>}
-      {error && <p>{error}</p>}
     </Card>
   );
 };
