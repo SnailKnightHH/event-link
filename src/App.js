@@ -3,10 +3,12 @@ import DropDownList from "./Components/DropDownList";
 import SignInPage from "./Components/SignInPage";
 import ParticipantPage from "./Components/ParticipantPage";
 import EventInfo from "./Components/EventInfo";
+import HostPage from "./Components/HostPage";
 
 import { useSelector } from "react-redux";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { BrowserRouter } from "react-router-dom";
+import Profile from "./Components/Profile";
 import React from "react";
 
 function App() {
@@ -30,7 +32,7 @@ function App() {
       {/* {!isAuth && <SignInPage />}
       {isAuth && <ParticipantPage />}
       {isAuth && <EventInfo />} */}
-      <ParticipantPage />
+      <HostPage />
     </React.Fragment>
   );
 }
