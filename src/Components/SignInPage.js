@@ -19,18 +19,28 @@ export default function BasicCard() {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
+  const updateUserName = (event) => {
+    setUserName(event.target.value);
+  };
+
+  const updateUserPW = (event) => {
+    setPassword(event.target.value);
+  };
+
   const loginHandler = (event) => {
     event.preventDefault();
     console.log("clicked");
+    console.log(userName);
+    console.log(password);
     dispatch(authActions.login());
 
-    const userInfo = { userName, password };
-    const response = await fetch("http://localhost:8000/api/uers", {
-      method: "POST",
-      body: JSON.stringify(userInfo),
-    });
-    const data = await response.json();
-    console.log(data);
+    // const userInfo = { userName, password };
+    // const response = await fetch("http://localhost:8000/api/uers", {
+    //   method: "POST",
+    //   body: JSON.stringify(userInfo),
+    // });
+    // const data = await response.json();
+    // console.log(data);
   };
 
   return (
@@ -46,7 +56,7 @@ export default function BasicCard() {
             required
             label="User name"
             variant="outlined"
-            onChange={(e) => setUserName(e.target.event)}
+            onChange={updateUserName}
             sx={{ mb: 3 }}
           />
 
@@ -55,7 +65,7 @@ export default function BasicCard() {
             required
             label="Password"
             variant="outlined"
-            onchange={(e) => setPassword(e.target.event)}
+            onChange={updateUserPW}
           />
         </form>
       </CardContent>
