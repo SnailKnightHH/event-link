@@ -24,13 +24,13 @@ export default function BasicCard() {
     console.log("clicked");
     dispatch(authActions.login());
 
-    // const userInfo = { userName, password };
-    // const response = await fetch("http://localhost:8000/api/events", {
-    //   method: "POST",
-    //   body: JSON.stringify(userInfo),
-    // });
-    // const data = await response.json();
-    // console.log(data);
+    const userInfo = { userName, password };
+    const response = await fetch("http://localhost:8000/api/uers", {
+      method: "POST",
+      body: JSON.stringify(userInfo),
+    });
+    const data = await response.json();
+    console.log(data);
   };
 
   return (

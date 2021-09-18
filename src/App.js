@@ -1,6 +1,8 @@
 import NavBar from "./Components/NavBar";
 import DropDownList from "./Components/DropDownList";
 import SignInPage from "./Components/SignInPage";
+import ParticipantPage from "./Components/ParticipantPage";
+import EventInfo from "./Components/EventInfo";
 
 import { useSelector } from "react-redux";
 import { Switch, Route, Redirect } from "react-router-dom";
@@ -26,7 +28,8 @@ function App() {
     // </BrowserRouter>
     <React.Fragment>
       {!isAuth && <SignInPage />}
-      {isAuth && <NavBar />}
+      {isAuth && <ParticipantPage />}
+      {isAuth && <EventInfo />}
     </React.Fragment>
   );
 }

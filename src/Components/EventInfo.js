@@ -20,7 +20,7 @@ export default class EventInfo extends React.Component {
         <p>Looking for minecraft gamers!</p>
         <h1>Category: </h1>
         <p>Gaming</p>
-        <button>Attend</button>
+        <Button variant="contained">Attend</Button>
         <h1>Attenders:</h1>
         <ul>
           <li style={{ listStyleType: "none" }}>
