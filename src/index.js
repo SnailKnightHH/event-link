@@ -7,12 +7,14 @@ import EventCards from "./Components/EventCards";
 import NavBar from "./Components/NavBar";
 import DropDownList from "./Components/DropDownList";
 import SignInPage from "./Components/SignInPage";
+import EventInfo from "./Components/EventInfo";
 
 ReactDOM.render(
   <React.StrictMode>
     <NavBar />
-    <EventCards />
-    <SignInPage />
+    {/* <EventCards /> */}
+    {/* <SignInPage /> */}
+    <EventInfo />
   </React.StrictMode>,
   document.getElementById("root")
 );
