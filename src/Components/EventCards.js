@@ -14,9 +14,11 @@ import FormControl from "@mui/material/FormControl";
 import { Link, useHistory } from "react-router-dom";
 import Select from "@mui/material/Select";
 import DropDownList from "./DropDownList";
+import Switch from "@mui/material/Switch";
 
 const EventCards = () => {
   const history = useHistory();
+  const label = { inputProps: { "aria-label": "Switch demo" } };
 
   const [events, setEvents] = useState([]);
   const [category, setCategory] = useState("");
@@ -85,6 +87,9 @@ const EventCards = () => {
           </Select>
         </FormControl>
       </Box>
+      <div>
+        <Switch {...label} defaultChecked />
+      </div>
       <Grid container spacing={2}>
         {events.map((p) => (
           <Grid key={p.id} item xs={12} sm={6} md={4}>
