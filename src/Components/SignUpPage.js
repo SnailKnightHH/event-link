@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import { useDispatch } from "react-redux";
 import { authActions } from "../Store/authSlice";
+import ButtonGroup from "@mui/material/ButtonGroup";
 
 const SignUpPage = () => {
   const [userName, setUserName] = useState("");
@@ -77,10 +78,24 @@ const SignUpPage = () => {
           </form>
         </CardContent>
 
-        <Button component={Link} to={"/Main"} variant="contained" sx={{ m: 2 }}>
-          Sign Up
-        </Button>
-
+        <ButtonGroup variant="contained" style={{ marginTop: "1rem" }}>
+          <Button
+            component={Link}
+            to={"/Main"}
+            variant="contained"
+            sx={{ width: 1 / 2 }}
+          >
+            Sign Up
+          </Button>
+          <Button
+            component={Link}
+            to={"/SignIn"}
+            variant="contained"
+            sx={{ width: 1 / 2 }}
+          >
+            Back
+          </Button>
+        </ButtonGroup>
         {ifSignedUp && <p>Sign Up Successful!</p>}
       </Card>
     </div>
