@@ -77,6 +77,7 @@ const HostPage = () => {
       <Navbar />
       <div
         style={{
+          marginTop: "2rem",
           height: "100vh",
           display: "flex",
           flexDirection: "column",
