@@ -7,20 +7,29 @@ import NavBar from "./NavBar";
 
 const dummy_data = [
   {
-    name: "lol",
+    name: "Charity xxx",
     id: 1,
-    description: "lol event",
+    description: "fundraiser for poor children around the world",
     category: "Game",
-    location: "Toronto",
+    location: "Other",
     date: "2021-3-21",
   },
   {
-    name: "lol2",
+    name: "League of Legends",
     id: 2,
-    description: "lol event",
+    description: `
+    Free Entry. Play for a chance to win your share of $350 USD!
+    
+    1st place team: $200
+    2nd place team: $100
+    3rd place team: $50
+    
+    Cash prizes will be paid out within 14 business days via PayPal.
+    
+    This competition is not affiliated with or sponsored by Riot Games, INC. or LoLEsports`,
     category: "Game",
-    location: "Toronto",
-    date: "2021-3-21",
+    location: "Montreal",
+    date: "2021-10-21",
   },
 ];
 
@@ -38,7 +47,7 @@ const Profile = () => {
         }}
       >
         <Avatar sx={{ bgcolor: deepOrange[500] }}>NL</Avatar>
-        <h2>User Name</h2>
+        <h2>Jerry Wan</h2>
         <h2>Hosted: </h2>
         <ul>
           {dummy_data.map((event) => (
