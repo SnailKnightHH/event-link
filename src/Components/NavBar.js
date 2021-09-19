@@ -29,7 +29,7 @@ const toolBarItemTheme = createTheme({
     },
 
     secondary: {
-      main: "#000000",
+      main: "#FFF7E1",
     },
   },
 });
@@ -55,7 +55,7 @@ export default function ButtonAppBar() {
                 Event Link
               </Typography>
 
-              <IconButton
+              {/* <IconButton
                 component={Link}
                 to={"/Host"}
                 size="medium"
@@ -63,11 +63,16 @@ export default function ButtonAppBar() {
                 color="inherit"
                 aria-label="menu"
                 sx={{ mr: 2 }}
+              > */}
+              <Button
+                variant="outlined"
+                color="secondary"
+                component={Link}
+                to={"/Host"}
               >
-                {/* <Button variant="text" color="primary"> */}
-                Host
-                {/* </Button> */}
-              </IconButton>
+                <Box sx={{ fontWeight: "bold" }}>Host</Box>
+              </Button>
+              {/* </IconButton> */}
               {/* <Button color="inherit">
                 <Avatar sx={{ bgcolor: deepOrange[500] }}>NL</Avatar>
               </Button> */}

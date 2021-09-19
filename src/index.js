@@ -6,6 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 
 import { Provider } from "react-redux";
 import store from "./Store/index";
+import "@fontsource/roboto/400.css";
 
 ReactDOM.render(
   <React.StrictMode>

@@ -9,6 +9,8 @@ import { authActions } from "../Store/authSlice";
 import ButtonGroup from "@mui/material/ButtonGroup";
 import { useDispatch } from "react-redux";
 import { width } from "@mui/system";
+import React from "react";
+
 const HostPage = () => {
   const dispatch = useDispatch();
   const loader = new Loader({
@@ -71,78 +73,85 @@ const HostPage = () => {
   };
 
   return (
-    <div
-      style={{
-        height: "100vh",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmRk7NO6m6Q002fnOnz3vrJOjzbg61qPw&callback=initMap&v=weekly"
-        async
-      ></script>
-
-      <section
+    <React.Fragment>
+      <Navbar />
+      <div
         style={{
-          padding: "1rem",
+          height: "100vh",
           display: "flex",
           flexDirection: "column",
-          width: "50vw",
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
-        <h1>Host an event</h1>
-        <TextField
-          required
-          defaultValue=""
-          label="Event Name"
-          onChange={updateTitle}
-          style={{ margin: "0.5rem 0" }}
-        />
-        <TextField
-          defaultValue=""
-          label="Description"
-          onChange={updateDescription}
-          style={{ margin: "0.5rem 0" }}
-        />
-        <TextField
-          defaultValue=""
-          label="cover image"
-          style={{ margin: "0.5rem 0" }}
-        />
-        <Button variant="contained" component="label" style={{ width: "50%" }}>
-          Upload File
-          <input type="file" hidden />
-        </Button>
-        <TextField
-          required
-          defaultValue=""
-          label="location"
-          onChange={updateLocation}
-          style={{ margin: "0.5rem 0" }}
-        />
-        <div id="map" style={{ height: "26rem", marginBottom: "1rem" }}></div>
-        <DropDownList
-          updateCurCategory={updateCartegory}
-          style={{ marginBottom: "1rem" }}
-        />
-        <ButtonGroup variant="contained" style={{ marginTop: "1rem" }}>
+        <script
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmRk7NO6m6Q002fnOnz3vrJOjzbg61qPw&callback=initMap&v=weekly"
+          async
+        ></script>
+
+        <section
+          style={{
+            padding: "1rem",
+            display: "flex",
+            flexDirection: "column",
+            width: "50vw",
+          }}
+        >
+          <h1>Host an event</h1>
+          <TextField
+            required
+            defaultValue=""
+            label="Event Name"
+            onChange={updateTitle}
+            style={{ margin: "0.5rem 0" }}
+          />
+          <TextField
+            defaultValue=""
+            label="Description"
+            onChange={updateDescription}
+            style={{ margin: "0.5rem 0" }}
+          />
+          <TextField
+            defaultValue=""
+            label="cover image"
+            style={{ margin: "0.5rem 0" }}
+          />
           <Button
-            component={Link}
-            to={"/main"}
-            onClick={HostHandler}
-            sx={{ width: 1 / 2 }}
+            variant="contained"
+            component="label"
+            style={{ width: "50%" }}
           >
-            Host
+            Upload File
+            <input type="file" hidden />
           </Button>
-          <Button component={Link} to={"/main"} sx={{ width: 1 / 2 }}>
-            Back
-          </Button>
-        </ButtonGroup>
-      </section>
-    </div>
+          <TextField
+            required
+            defaultValue=""
+            label="location"
+            onChange={updateLocation}
+            style={{ margin: "0.5rem 0" }}
+          />
+          <div id="map" style={{ height: "26rem", marginBottom: "1rem" }}></div>
+          <DropDownList
+            updateCurCategory={updateCartegory}
+            style={{ marginBottom: "1rem" }}
+          />
+          <ButtonGroup variant="contained" style={{ marginTop: "1rem" }}>
+            <Button
+              component={Link}
+              to={"/main"}
+              onClick={HostHandler}
+              sx={{ width: 1 / 2 }}
+            >
+              Host
+            </Button>
+            <Button component={Link} to={"/main"} sx={{ width: 1 / 2 }}>
+              Back
+            </Button>
+          </ButtonGroup>
+        </section>
+      </div>
+    </React.Fragment>
   );
 };
 
