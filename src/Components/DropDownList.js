@@ -24,9 +24,15 @@ export default function BasicSelect(props) {
           label="Category"
           onChange={handleChange}
         >
-          <MenuItem value={1}>Gaming</MenuItem>
-          <MenuItem value={2}>Movie</MenuItem>
-          <MenuItem value={3}>Thirty</MenuItem>
+          <MenuItem value={3}>Gaming</MenuItem>
+          <MenuItem value={4}>Movie</MenuItem>
+          <MenuItem value={5}>Concerts</MenuItem>
+          <MenuItem value={6}>Travel</MenuItem>
+          <MenuItem value={7}>Dating</MenuItem>
+          <MenuItem value={8}>Study</MenuItem>
+          <MenuItem value={9}>Business</MenuItem>
+          <MenuItem value={10}>Hackathons</MenuItem>
+          <MenuItem value={11}>Other</MenuItem>
         </Select>
       </FormControl>
     </Box>
