@@ -45,7 +45,12 @@ const HostPage = () => {
   };
 
   const HostHandler = async (event) => {
-    const eventInfo = { title, description, cartegory, location };
+    const eventInfo = {
+      title,
+      description,
+      cartegory,
+      location,
+    };
     console.log(eventInfo);
     setError(null);
     try {
