@@ -46,7 +46,7 @@ const EventCards = () => {
     const response = await fetch(url);
     const data = await response.json();
     console.log(data);
-    history.push(`/Main/${productId}`, { some: "value" });
+    history.push(`/Main/${productId}`, { productId });
   };
 
   if (events.length == 0) {

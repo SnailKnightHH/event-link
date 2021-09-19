@@ -1,15 +1,20 @@
 import React from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Navbar from "./NavBar.js";
 import { deepOrange } from "@mui/material/colors";
 import { Link, useParams } from "react-router-dom";
 
-const EventInfo = (props) => {
-  useEffect(() => {
-    console.log("The following is props");
-    console.log(props);
+const EventInfo = () => {
+  const [Data, setData] = useState("");
+
+  useEffect(async () => {
+    const url = `http://localhost:8000/api/events/${params.productId}`;
+    const response = await fetch(url);
+    const data = await response.json();
+    console.log(data);
+    setData(data);
   }, []);
 
   const params = useParams();
@@ -27,16 +32,13 @@ const EventInfo = (props) => {
     <div style={{ padding: "1rem" }}>
       <Navbar />
       <h1>Event Name: </h1>
-      {/* <p>{props}</p> */}
-      <h1>Description: </h1>
-      <p>
-        Anyone who is interested can private msg me at:
-        https://www.linkedin.com/in/jerry-wan/
-      </p>
+      <p>{Data.title}</p>
+      <h1>Description</h1>
+      <p>{Data.description}</p>
       <h1>Location: </h1>
       <p>Looking for minecraft gamers!</p>
       <h1>Category: </h1>
-      <p>Gaming</p>
+      <p>{Data.cartegory}</p>
 
       <Button component={Link} to={"/main"} variant="contained">
         Attend
