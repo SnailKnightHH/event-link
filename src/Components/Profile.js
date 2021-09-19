@@ -1,6 +1,7 @@
 import React from "react";
-import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
+import { Link } from "react-router-dom";
 import { deepOrange } from "@mui/material/colors";
 
 const dummy_data = [
@@ -24,7 +25,15 @@ const dummy_data = [
 
 const Profile = () => {
   return (
-    <Box sx={{ m: 2 }}>
+    <div
+      style={{
+        marginTop: "1rem",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
       <Avatar sx={{ bgcolor: deepOrange[500] }}>NL</Avatar>
       <h2>User Name</h2>
       <h2>Hosted: </h2>
@@ -43,7 +52,23 @@ const Profile = () => {
           </li>
         ))}
       </ul>
-    </Box>
+      <h2>Contact Info: </h2>
+      <p style={{ maxWidth: "60vw" }}>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non ducimus
+        labore totam omnis vitae laborum aliquam tempore, magnam temporibus,
+        officiis harum aliquid numquam sunt. Molestias sapiente sed earum rerum
+        velit? Animi quas, quia voluptatum beatae sequi quidem magni, at culpa
+        hic natus non molestias? Cumque laudantium, praesentium ullam corporis
+        recusandae temporibus est dicta ipsum dolores itaque odit ipsa et eius.
+        Necessitatibus culpa qui quisquam tenetur nulla in. In, asperiores rerum
+        voluptatibus omnis repudiandae beatae reiciendis facere hic, impedit
+        cupiditate sunt, totam excepturi. Quam fugiat, earum iure consectetur
+        odit officia deserunt?
+      </p>
+      <Button component={Link} to={"/main"} variant="contained">
+        Back
+      </Button>
+    </div>
   );
 };
 

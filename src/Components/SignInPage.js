@@ -50,9 +50,8 @@ export default function BasicCard() {
       if (!response.ok) {
         throw new Error("User Not Found");
       }
-      const data = await response.json();
       dispatch(authActions.login());
-      history.push("/main");
+      history.push("/Main");
     } catch (error) {
       setError(error.message);
     }

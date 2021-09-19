@@ -6,7 +6,9 @@ import { Link } from "react-router-dom";
 import DropDownList from "./DropDownList";
 import { useState } from "react";
 import { authActions } from "../Store/authSlice";
+import ButtonGroup from "@mui/material/ButtonGroup";
 import { useDispatch } from "react-redux";
+import { width } from "@mui/system";
 const HostPage = () => {
   const dispatch = useDispatch();
   const loader = new Loader({
@@ -16,8 +18,8 @@ const HostPage = () => {
 
   loader.load().then((google) => {
     new google.maps.Map(document.getElementById("map"), {
-      center: { lat: -34.397, lng: 150.644 },
-      zoom: 8,
+      center: { lat: 43.6427, lng: -79.3871 },
+      zoom: 11,
     });
   });
 
@@ -77,7 +79,6 @@ const HostPage = () => {
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmRk7NO6m6Q002fnOnz3vrJOjzbg61qPw&callback=initMap&v=weekly"
         async
       ></script>
-      <Navbar></Navbar>
 
       <section
         style={{
@@ -106,7 +107,7 @@ const HostPage = () => {
           label="cover image"
           style={{ margin: "0.5rem 0" }}
         />
-        <Button component="label" style={{ width: "50%" }}>
+        <Button variant="contained" component="label" style={{ width: "50%" }}>
           Upload File
           <input type="file" hidden />
         </Button>
@@ -117,17 +118,24 @@ const HostPage = () => {
           onChange={updateLocation}
           style={{ margin: "0.5rem 0" }}
         />
-        <div id="map" style={{ height: "30rem" }}></div>
-        <DropDownList updateCurCategory={updateCartegory} />
-        <Button
-          component={Link}
-          to={"/main"}
-          variant="contained"
-          style={{ width: "50%" }}
-          onClick={HostHandler}
-        >
-          host
-        </Button>
+        <div id="map" style={{ height: "26rem", marginBottom: "1rem" }}></div>
+        <DropDownList
+          updateCurCategory={updateCartegory}
+          style={{ marginBottom: "1rem" }}
+        />
+        <ButtonGroup variant="contained" style={{ marginTop: "1rem" }}>
+          <Button
+            component={Link}
+            to={"/main"}
+            onClick={HostHandler}
+            sx={{ width: 1 / 2 }}
+          >
+            Host
+          </Button>
+          <Button component={Link} to={"/main"} sx={{ width: 1 / 2 }}>
+            Back
+          </Button>
+        </ButtonGroup>
       </section>
     </div>
   );

@@ -6,6 +6,7 @@ import EventInfoPage from "./Components/EventInfoPage";
 import SignUpPage from "./Components/SignUpPage";
 import AccountMenu from "./Components/AccountMenu";
 import HostPage from "./Components/HostPage";
+import NotFound from "./Components/NotFound";
 import "./App.css";
 
 import { useSelector } from "react-redux";
@@ -53,11 +54,14 @@ function App() {
           <Route exact path="/Host">
             <HostPage />
           </Route>
-          <Route exact path="/info">
+          <Route exact path="/Main/:productId">
             <EventInfoPage />
           </Route>
           <Route exact path="/Profile">
             <Profile />
+          </Route>
+          <Route path="*">
+            <NotFound />
           </Route>
         </Switch>
       </React.Fragment>
