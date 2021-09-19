@@ -70,7 +70,21 @@ const EventCards = () => {
             </Select>
           </FormControl>
         </Box> */}
-      <DropDownList />
+      <Box sx={{ width: 240 }}>
+        <FormControl fullWidth>
+          <InputLabel id="demo-simple-select-label">Category</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            label="Category"
+          >
+            <MenuItem value={1}>Gaming</MenuItem>
+            <MenuItem value={2}>Movie</MenuItem>
+            <MenuItem value={3}>Concerts</MenuItem>
+            <MenuItem value={4}>Travel</MenuItem>
+          </Select>
+        </FormControl>
+      </Box>
       <Grid container spacing={2}>
         {events.map((p) => (
           <Grid key={p.id} item xs={12} sm={6} md={4}>
