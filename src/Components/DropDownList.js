@@ -10,7 +10,7 @@ export default function BasicSelect(props) {
 
   const handleChange = (event) => {
     setCategory(event.target.value);
-    props.updateCurCategory(Category);
+    if (props.updateCurCategory != null) props.updateCurCategory(Category);
   };
 
   return (

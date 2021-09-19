@@ -19,9 +19,11 @@ const EventCards = () => {
   const history = useHistory();
 
   const [events, setEvents] = useState([]);
+  const [displayedEvents, setDisplayedEvents] = useState([]);
   const [category, setCategory] = useState("");
 
   useEffect(async () => {
+    setCategory(-1);
     const url = "http://localhost:8000/api/events";
     const response = await fetch(url);
     const data = await response.json();
@@ -32,15 +34,27 @@ const EventCards = () => {
     console.log("useEffect initial data test: ");
     console.log(data);
     console.log(events);
+    setDisplayedEvents(data);
   }, []);
 
   const handleChange = (event) => {
-    console.log(event.target.value);
-    this.state.category = event.target.value;
+    console.log("event.target.value: " + event.target.value);
+    //category = event.target.value;
+    console.log("category: " + category);
+    let temp = [];
+    events.forEach((e) => {
+      if (e.cartegory === event.target.value || event.target.value === -1) {
+        temp.push(e);
+        console.log("temp");
+        console.log(temp);
+      }
+    });
+    setDisplayedEvents(temp);
   };
 
   const enterEventEntry = async (productId) => {
     console.log("in");
+    console.log(productId);
     const url = `http://localhost:8000/api/events/${productId}`;
     console.log(`url ${url}`);
     const response = await fetch(url);
@@ -77,17 +91,25 @@ const EventCards = () => {
             labelId="demo-simple-select-label"
             id="demo-simple-select"
             label="Category"
+            value={-1}
+            onChange={handleChange}
           >
-            <MenuItem value={1}>Gaming</MenuItem>
-            <MenuItem value={2}>Movie</MenuItem>
-            <MenuItem value={3}>Concerts</MenuItem>
-            <MenuItem value={4}>Travel</MenuItem>
+            <MenuItem value={-1}>All</MenuItem>
+            <MenuItem value={3}>Gaming</MenuItem>
+            <MenuItem value={4}>Movie</MenuItem>
+            <MenuItem value={5}>Concerts</MenuItem>
+            <MenuItem value={6}>Travel</MenuItem>
+            <MenuItem value={7}>Dating</MenuItem>
+            <MenuItem value={8}>Study</MenuItem>
+            <MenuItem value={9}>Business</MenuItem>
+            <MenuItem value={10}>Hackathons</MenuItem>
+            <MenuItem value={11}>Other</MenuItem>
           </Select>
         </FormControl>
       </Box>
       <Grid container spacing={2}>
-        {events.map((p) => (
-          <Grid key={p.id} item xs={12} sm={6} md={4}>
+        {displayedEvents.map((p) => (
+          <Grid key={p.title} item xs={12} sm={6} md={4}>
             <Card sx={{ width: 300, margin: "2rem" }}>
               <CardActionArea
                 // component={Link}
