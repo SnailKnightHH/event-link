@@ -40,8 +40,6 @@ const EventCards = () => {
     console.log("useEffect initial data test: ");
     console.log(data);
     console.log(events);
-    setDisplayedEvents(data);
-  }, []);
 
     if (document.getElementById("map3")) {
       const loader = new Loader({
@@ -56,12 +54,12 @@ const EventCards = () => {
         });
       });
     }
+    setDisplayedEvents(data);
   }, [ifMap]);
 
   const handleChange = (event) => {
     console.log("event.target.value: " + event.target.value);
     //category = event.target.value;
-    console.log("category: " + category);
     let temp = [];
     events.forEach((e) => {
       if (e.cartegory === event.target.value || event.target.value === -1) {
@@ -132,7 +130,7 @@ const EventCards = () => {
             labelId="demo-simple-select-label"
             id="demo-simple-select"
             label="Category"
-            value={-1}
+            defaultValue={-1}
             onChange={handleChange}
           >
             <MenuItem value={-1}>All</MenuItem>
@@ -157,7 +155,7 @@ const EventCards = () => {
       )}
       {!ifMap && (
         <Grid container spacing={2}>
-          {events.map((p) => (
+          {displayedEvents.map((p) => (
             <Grid key={p.id} item xs={12} sm={6} md={4}>
               <Card sx={{ width: 300, margin: "2rem" }}>
                 <CardActionArea
