@@ -22,7 +22,6 @@ const EventInfo = () => {
   categoryMap.set(10, "Hackathons");
   categoryMap.set(11, "Other");
 
-
   const [Data, setData] = useState("");
 
   useEffect(async () => {
